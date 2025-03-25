@@ -1,0 +1,309 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "password": "123456"
+    },
+    {
+      "id": "3c8e",
+      "name": "murshida",
+      "email": "fff@gmail.com",
+      "password": "1122"
+    },
+    {
+      "id": "76e4",
+      "name": "naseeh",
+      "email": "nesi@gmail.com",
+      "password": "3344"
+    },
+    {
+      "id": "040b",
+      "name": "nafih",
+      "email": "nafi@gmail.com",
+      "password": "7878"
+    },
+    {
+      "id": "1c0a",
+      "name": "murshida",
+      "email": "fff@gmail.com",
+      "password": "1122"
+    },
+    {
+      "id": "c1ce",
+      "name": "murshida",
+      "email": "fff@gmail.com",
+      "password": "1122"
+    },
+    {
+      "id": "5094",
+      "name": "jubin",
+      "email": "jubin@gmail.com",
+      "password": "8899"
+    },
+    {
+      "id": "ba70",
+      "name": "Murshida jubin",
+      "email": "fff@gmail.com",
+      "password": "1122"
+    },
+    {
+      "id": "4871",
+      "name": "Murshida jubin",
+      "email": "fff@gmail.com",
+      "password": "1122"
+    },
+    {
+      "id": "ebe7",
+      "name": "Murshida jubin",
+      "email": "murshidajubin51@gmail.com",
+      "password": "V4UewjM33ThkFcj"
+    },
+    {
+      "id": "d89e",
+      "name": "ayzi",
+      "email": "ayzi@gmail.com",
+      "password": "0000"
+    },
+    {
+      "id": "cc61",
+      "name": "dddd",
+      "email": "d@gmail.com",
+      "password": "7777"
+    },
+    {
+      "id": "aadd",
+      "name": "nafih",
+      "email": "fff@gmail.com",
+      "password": "0000"
+    },
+    {
+      "id": "26cb",
+      "name": "nasi",
+      "email": "nasi@gmail.com",
+      "password": "7878"
+    }
+  ],
+  "Boy": [
+    {
+      "id": "1a2b",
+      "name": "Soft cotton onasies",
+      "price": "$9.99",
+      "image": "https://image.hm.com/assets/hm/ce/24/ce24f673289db7d3970eb0eb50045757e268b3ec.jpg?imwidth=2160",
+      "description": "Lightweight cotton onesie with snap buttons for easy diaper changes, perfect for daily wear."
+    },
+    {
+      "id": "b2c3",
+      "name": "Summer Romper",
+      "price": "$12.49",
+      "image": "https://cdn.fcglcdn.com/brainbees/images/products/583x720/19168142a.webp",
+      "description": "Breathable and comfy romper with playful prints, ideal for summer outings."
+    },
+    {
+      "id": "c3d4",
+      "name": " T-Shirt & Shorts Set",
+      "price": "$15.99",
+      "image": "https://cdn.fcglcdn.com/brainbees/images/products/zoom/19529312a.webp",
+      "description": "Trendy t-shirt paired with soft, stretchable shorts for all-day comfort."
+    },
+    {
+      "id": "d4e5",
+      "name": "Cozy Pajama Set",
+      "price": "$14.79",
+      "image": "https://image.hm.com/assets/hm/e1/28/e1282cebd04ebe73346de780e707003411ab09be.jpg?imwidth=2160",
+      "description": "Warm and breathable pajama set with adorable prints for a restful sleep."
+      
+    },
+    {
+      "id": "e5f6",
+      "name": "Ethnic Kurta Pajama",
+      "price": "$18.99",
+      "image": "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/4/a/4a6bf8dPANF9494_1.jpg?rnd=20200526195200&tr=w-720",
+      "description": "Traditional embroidered kurta with soft pajama, perfect for festivals and celebrations."
+    },
+    {
+      "id": "f6g7",
+      "name": " Hooded Jumpsuit",
+      "price": "$19.99",
+      "image": "https://cdn.fcglcdn.com/brainbees/images/products/zoom/19697472a.webp",
+      "description": "Cozy full-body jumpsuit with a fleece lining to keep your baby warm in winter."
+    }
+  ],
+  "Girl": [
+    {
+      "id": "g1a2b",
+      "name": "Pink Princess Frock",
+      "price": "$19.99",
+      "image": "https://m.media-amazon.com/images/I/510jqTV-cRL._AC_UY1000_.jpg",
+      "description": "Elegant pink frock with lace detailing, perfect for special occasions."
+    },
+    {
+      "id": "g2b3c",
+      "name": "Floral Summer Dress",
+      "price": "$14.99",
+      "image": "https://s.alicdn.com/@sc04/kf/H78e6fdc5f2eb49ed933bc143eb3fff9d9.jpg",
+      "description": "Lightweight cotton dress with vibrant floral patterns, ideal for sunny days."
+    },
+    {
+      "id": "g3c4d",
+      "name": "Tutu Party Dress",
+      "price": "$24.99",
+      "image": "https://i5.walmartimages.com/seo/Children-Tutu-Princess-Dress-Trendy-Off-Shoulder-Bow-Dresses-Multi-Layered-Tulle-Gown-Dress-Classy-Evening-Dresses_cecc77d8-b913-4072-87ff-af9a4b4df33c.e1c2015ff7401abfcc81db83a38a1df6.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF",
+      "description": "Charming tutu dress with soft tulle layers, designed for little ballerinas."
+    },
+    {
+      "id": "g4d5e",
+      "name": "Denim Skirt Set",
+      "price": "$17.99",
+      "image": "https://img.kwcdn.com/product/fancy/3ed9894d-03d9-40bf-b766-6722b49f11fa.jpg?imageView2/2/w/500/q/60/format/webp",
+      "description": "Adorable polka dot dress with ruffled sleeves for a playful look."
+    },
+    {
+      "id": "g5e6f",
+      "name": "Denim Overall Dress",
+      "price": "$22.99",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/41pg5hbYyTL._SL500_._AC_SL500_.jpg",
+      "description": "Trendy denim overall dress with adjustable straps for a stylish everyday outfit."
+    },
+    {
+      "id": "g6f7g",
+      "name": "Fairy Tale Gown",
+      "price": "$29.99",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/51WoQwHBdkS._SLDPMOBCAROUSELAUTOCROP288221_MCnd_AC_SR462,693_.jpg",
+      "description": "Magical fairy tale gown with sparkly embellishments, fit for a princess."
+    }
+  ],
+  "Skincare": [
+    {
+      "id": "s1a2b",
+      "name": "Gentle Baby Lotion",
+      "price": "$9.99",
+      "image": "https://mothersparsh.com/cdn/shop/files/4-body-lotion-with-natural-oatmeal-care.webp?v=1739872583&width=600",
+      "description": "Hydrating baby lotion with natural ingredients for soft and nourished skin."
+    },
+    {
+      "id": "s2b3c",
+      "name": "Soothing Baby Oil",
+      "price": "$12.99",
+      "image": "https://mothersparsh.com/cdn/shop/files/Nourishing_Massage_Oil.webp?v=1724409095&width=713",
+      "description": "Mild and non-greasy baby oil enriched with almond and jojoba extracts."
+    },
+    {
+      "id": "s3c4d",
+      "name": " Baby Shampoo",
+      "price": "$8.99",
+      "image": "https://mothersparsh.com/cdn/shop/files/Mother-Sparsh-Plant-Powered-Baby-Shampoo-400ml-4.webp?v=1714973571&width=713",
+      "description": "A gentle, tear-free formula that cleanses and softens your baby’s hair."
+    },
+    {
+      "id": "s4d5e",
+      "name": "Natural Baby Soap",
+      "price": "$5.99",
+      "image": "https://mothersparsh.com/cdn/shop/files/Mother-Sparsh-Plant-Powered-Natural-Baby-Soap-1.webp?v=1714477604&width=713",
+      "description": "Mild baby soap with organic shea butter to protect delicate skin."
+    },
+    {
+      "id": "s5e6f",
+      "name": "Moisturizing  Cream",
+      "price": "$11.99",
+      "image": "https://m.media-amazon.com/images/I/61Af2V1PYRL._SL1500_.jpg",
+      "description": "A deeply hydrating baby cream that prevents dryness and keeps skin soft."
+    },
+    {
+      "id": "s6f7g",
+      "name": "Baby Sunscreen ",
+      "price": "$14.99",
+      "image": "https://mothersparsh.com/cdn/shop/files/PlantPowerered_Baby_Sunscreen.webp?v=1724409401&width=713",
+      "description": "Broad-spectrum sunscreen specially formulated to protect baby’s sensitive skin."
+    }
+  ],
+  "Newarrival": [
+    {
+      "id": "b1t0w",
+      "name": "Baby Bathing Towel",
+      "price": "$12.99",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTtKNqEjEBSI507VuyXMPdawguKzl9Ru17ZsR15SQIA3FPe2GBlVfS3LyhHYHJo38hqoQ&usqp=CAU",
+      "description": "Soft and highly absorbent organic cotton towel designed for newborns and infants."
+    },
+    {
+      "id": "b2w3p",
+      "name": " Baby Wipes",
+      "price": "$9.49",
+      "image": "https://m.media-amazon.com/images/I/71bZjuJ2LZL._AC_UF1000,1000_QL80_.jpg",
+      "description": "Hypoallergenic, alcohol-free wipes enriched with aloe vera and chamomile for gentle cleansing."
+    },
+    {
+      "id": "v4p0r",
+      "name": " Baby Vapor Roll-On",
+      "price": "$8.99",
+      "image": "https://mothersparsh.com/cdn/shop/files/1-mother-sparsh-vapour-roll-on.webp?v=1737705285",
+      "description": "Soothing vapor roll-on with eucalyptus and lavender, perfect for congestion relief in babies."
+    },
+    {
+      "id": "s7a1f",
+      "name": "Baby Shampoo & Body Wash",
+      "price": "$10.99",
+      "image": "https://www.mommypure.com/cdn/shop/products/combo3_grande.jpg?v=1612804541",
+      "description": "Mild, tear-free formula enriched with oat extract to nourish baby’s delicate skin and hair."
+    },
+    {
+      "id": "b3d5c",
+      "name": " Soft Baby Diapers",
+      "price": "$24.99",
+      "image": "https://m.media-amazon.com/images/I/61b1+kb-A8L.jpg",
+      "description": "Super absorbent and breathable diapers designed to keep your baby dry and comfortable."
+    },
+    {
+      "id": "m2a6s",
+      "name": "Muslin Swaddle Blanket Set",
+      "price": "$18.99",
+      "image": "https://masilo.in/cdn/shop/products/MMSWA-3PK-STAR-GOLD_2.jpg?v=1663153069",
+      "description": "Premium muslin cotton swaddle blankets with breathable fabric for a cozy and secure wrap."
+    }
+  ],
+  "Toys": [
+    {
+      "id": "t1r3a",
+      "name": " Plush Bear Toy",
+      "price": "$15.99",
+      "image": "https://m.media-amazon.com/images/I/61tweDdAsGL._SL1500_.jpg",
+      "description": "Adorable and cuddly plush elephant made with ultra-soft fabric, perfect for snuggles."
+    },
+    {
+      "id": "t2r5b",
+      "name": " Animal Beads Maze",
+      "price": "$12.49",
+      "image": "https://www.scandiborn.co.uk/cdn/shop/files/Trixie-Wooden-Animal-Beads-Maze-Product-1.jpg?v=1732029405&width=990",
+      "description": "Help your child develop essential motor skills and hand-eye coordination with trixie wooden animal beads maze."
+    },
+    {
+      "id": "t3r8c",
+      "name": "Musical Rattle Set",
+      "price": "$9.99",
+      "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQoSTYiyQztLjQS3LErW0x0iM2hHsn_cAsvR4dFgnm5KbQg8f2ysfE8SlymHUZWWoqwPDh9Cb5uJbs4cBqGYFqrk_mTeRSnOk8QdAkM5X8a",
+      "description": "Set of lightweight and easy-to-grip rattles that make gentle sounds to engage your baby’s senses."
+    },
+    {
+      "id": "t4r2d",
+      "name": "Soft Cloth Crinkle Book",
+      "price": "$11.99",
+      "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTUGXOvPMYOD_eq69yalBlwrMfADKZJY_1j8XM65hJC4C4_yDbwIkAU7TTchMeB6dxeoTvX6eJ8GkRZyoexF26kqR8OuZRQAPJlZ9TYT73hr12SibbcbyH76w",
+      "description": "Interactive soft book with crinkly pages and bright colors to stimulate early learning."
+    },
+    {
+      "id": "t5r6e",
+      "name": "Teething Silicone Bead Toy",
+      "price": "$8.49",
+      "image": "https://cdn.fcglcdn.com/brainbees/images/products/zoom/14235599a.webp",
+      "description": "BPA-free silicone teething toy designed to soothe sore gums while being easy to hold."
+    },
+    {
+      "id": "t6r9f",
+      "name": "Pull-Along Wooden Animal Toy",
+      "price": "$14.99",
+      "image": "https://toyloft.in/cdn/shop/files/PullAlongToyForKids_4_891325aa-6087-4018-90bb-9c539baf7d36.jpg?v=1718191791",
+      "description": "Fun pull-along toy with smooth wheels and a cute animal design to encourage walking."
+    }
+  ]
+}
