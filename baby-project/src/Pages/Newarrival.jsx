@@ -9,18 +9,20 @@ import React from "react";
 
 
 import { ToastContainer, Slide } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Newarrival = () => {
   const { isAuthenticated } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+const navigate=useNavigate()
   useEffect(() => {
-    axios.get("http://localhost:5002/Newarrival")
+    axios.get("http://localhost:5002/Product")
       .then((response) => {
         if (response.data && Array.isArray(response.data)) {
-          setProducts(response.data);
+          const product=response.data.filter((value)=>value.category=='Newarrival')
+          setProducts(product);
         } else if (response.data.Newarrival && Array.isArray(response.data.Newarrival)) {
           setProducts(response.data.Newarrival);
         } else {
@@ -84,13 +86,20 @@ const Newarrival = () => {
                 <p className="text-gray-600 text-sm mb-2 text-center">{item.description}</p>
                 <p className="text-lg font-bold text-green-500 text-center">{item.price}</p>
                 
-               
-                <button
-                  onClick={() => addToCart(item)}
-                  className="mt-3 px-4 py-2 bg-blue-500 text-white rounded w-full hover:bg-blue-700 transition"
-                >
-                  Add to Cart
-                </button>
+                <div className="flex gap-2 mt-3">
+                  <button
+                    onClick={() => addToCart(item)}
+                    className="px-4 py-2 bg-blue-500 text-white rounded w-full hover:bg-blue-700 transition"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    onClick={() => navigate(`/Product/${item.id}`)}
+                    className="px-4 py-2 bg-gray-500 text-white rounded w-full hover:bg-gray-700 transition"
+                  >
+                    View Details
+                  </button>
+                </div>
               </div>
             ))
           ) : (
@@ -101,7 +110,6 @@ const Newarrival = () => {
 
       <Footer />
 
-     
       <ToastContainer />
     </div>
   );

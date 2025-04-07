@@ -9,18 +9,23 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 import { ToastContainer, Slide } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Boy = () => {
   const { isAuthenticated } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const Navigate=useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:5002/Boy")
+    axios.get("http://localhost:5002/Product")
       .then((response) => {
         if (response.data && Array.isArray(response.data)) {
-          setProducts(response.data);
+       
+          const product=response.data.filter((valu)=>valu.category=='Boy')
+          
+          setProducts(product);
         } else if (response.data.Boy && Array.isArray(response.data.Boy)) {
           setProducts(response.data.Boy);
         } else {
@@ -34,19 +39,15 @@ const Boy = () => {
         setLoading(false);
       });
   }, []);
-  const addToCart = (product) => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const addToCart = async(product) => {
+    const userid=localStorage.getItem('id')
+
     
-    
-    const formattedProduct = {
-      ...product,
-      price: parseFloat(product.price.replace("$", "")),
-      quantity: 1, 
-    };
-  
-    cart.push(formattedProduct);
-    localStorage.setItem("cart", JSON.stringify(cart));
-  
+   var res =await axios.get(`http://localhost:5002/users/${userid}`)
+   const cart=res.data.cart
+   const newCart=[...cart,product]
+   const response=await axios.patch(`http://localhost:5002/users/${userid}`,{cart:newCart})
+    console.log(response.data);
     toast.success(`${product.name} added to cart!`, {
       position: "top-center",
       autoClose: 2000,
@@ -82,14 +83,22 @@ const Boy = () => {
                 <h2 className="text-xl font-semibold text-center">{item.name}</h2>
                 <p className="text-gray-600 text-sm mb-2 text-center">{item.description}</p>
                 <p className="text-lg font-bold text-green-500 text-center">{item.price}</p>
-                
-              
-                <button
-                  onClick={() => addToCart(item)}
-                  className="mt-3 px-4 py-2 bg-blue-500 text-white rounded w-full hover:bg-blue-700 transition"
-                >
-                  Add to Cart
-                </button>
+
+                <div className="flex gap-2 mt-3">
+                  <button
+                    onClick={() => addToCart(item)}
+                    className="px-4 py-2 bg-blue-500 text-white rounded w-full hover:bg-blue-700 transition"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+   onClick={() => Navigate(`/product/${item.id}`)} // Corrected to navigate dynamically based on product ID
+   className="px-4 py-2 bg-gray-500 text-white rounded w-full hover:bg-gray-700 transition"
+>
+   View Details
+</button>
+
+                </div>
               </div>
             ))
           ) : (
@@ -97,9 +106,8 @@ const Boy = () => {
           )}
         </div>
       </div>
-
+    
       <Footer />
-
     
       <ToastContainer />
     </div>

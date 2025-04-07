@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
 import { FaSearch, FaUser, FaShoppingCart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -16,20 +17,10 @@ const Navbar = () => {
   useEffect(() => {
     const fetchAllProducts = async () => {
       try {
-        const urls = [
-          "http://localhost:5002/Boy",
-          "http://localhost:5002/Girl",
-          "http://localhost:5002/Skincare",
-          "http://localhost:5002/Newarrival",
-          "http://localhost:5002/Toys"
-        ];
-  
-        const responses = await Promise.all(urls.map(url => fetch(url)));
-        const data = await Promise.all(responses.map(response => response.json()));
-  
-        const allProducts = data.flat(); 
-        console.log("Fetched Products:", allProducts); 
-        setProducts(allProducts);
+       const response=await axios.get(`http://localhost:5002/Product`) 
+       console.log(response.data);
+       
+        setProducts(response.data);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -40,11 +31,7 @@ const Navbar = () => {
   
 
   useEffect(() => {
-    const updateCartCount = () => {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      setCartCount(cart.length);
-    };
-    updateCartCount();
+   
 
     const handleStorageChange = () => {
       updateCartCount();
@@ -64,18 +51,27 @@ const Navbar = () => {
 
   const handleSearch = (query) => {
     setSearchQuery(query);
+  
     if (query.trim() === "") {
       setFilteredProducts([]);
       return;
     }
+  
+    if (products.length === 0) {
+      console.log("No products available for search.");
+      return;
+    }
+  
     console.log("Products available for search:", products);
-
-    const results = products.filter((product) =>
+  
+    const results = products.filter(product =>
       product?.name?.toLowerCase().includes(query.toLowerCase())
     );
-    console.log("Filtered Results:", results); 
+  
+    console.log("Filtered Results:", results);
     setFilteredProducts(results);
   };
+  
 
   const handleLogout = () => {
     localStorage.removeItem("user");
@@ -125,6 +121,7 @@ const Navbar = () => {
         <div 
           key={product.id} 
           className="p-2 hover:bg-gray-100 cursor-pointer flex items-center gap-3"
+          onClick={()=>navigate(`/product/${product.id}`)}
         >
           <img src={product.image} alt={product.name} className="w-10 h-10 object-cover rounded" />
           <span>{product.name}</span>
@@ -137,7 +134,7 @@ const Navbar = () => {
 
       
       <div className="flex gap-6 text-lg">
-        <button onClick={() => navigate("/home")} className="hover:text-gray-500">Home</button>
+        <button onClick={() => navigate("/")} className="hover:text-gray-500">Home</button>
         <button onClick={() => navigate("/about")} className="hover:text-gray-500">About</button>
         <button onClick={() => navigate("/boy")} className="hover:text-gray-500">Boy</button>
         <button onClick={() => navigate("/girl")} className="hover:text-gray-500">Girl</button>
@@ -154,7 +151,7 @@ const Navbar = () => {
             {isAuthenticated && <span className="text-gray-700 font-semibold">{user?.name}</span>}
           </div>
           {isDropdownOpen && isAuthenticated && (
-            <div className="absolute right-0 mt-2 w-48 bg-white border shadow-lg rounded-lg p-4">
+            <div className="absolute right-0 mt-2 w-48 bg-white border shadow-lg rounded-lg p-4 z-50">
               <p className="text-gray-500 text-sm">{user?.email}</p>
               <button 
                 onClick={handleLogout} 
@@ -184,3 +181,7 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
+

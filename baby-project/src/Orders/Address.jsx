@@ -1,15 +1,5 @@
-import { useState, useEffect } from "react";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  FaUser,
-  FaEnvelope,
-  FaHome,
-  FaPhone,
-  FaMapMarkerAlt,
-  FaMoneyBillWave,
-  FaCreditCard,
-} from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -23,7 +13,6 @@ export default function AddressForm() {
     optionalNumber: "",
     pincode: "",
   });
-
   const [paymentMethod, setPaymentMethod] = useState(null);
   const [onlinePaymentOption, setOnlinePaymentOption] = useState("");
   const [cartItems, setCartItems] = useState([]);
@@ -32,7 +21,10 @@ export default function AddressForm() {
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("checkoutCart")) || [];
     setCartItems(storedCart);
-    const calculatedTotal = storedCart.reduce((total, item) => total + item.price * item.quantity, 0);
+    const calculatedTotal = storedCart.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
     setTotalPrice(calculatedTotal);
   }, []);
 
@@ -47,6 +39,7 @@ export default function AddressForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (cartItems.length === 0) {
       toast.error("Your cart is empty!");
       return;
@@ -69,12 +62,24 @@ export default function AddressForm() {
       return;
     }
 
-    const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
+    // Retrieve and parse stored orders ensuring it is an array.
+    const storedOrders = localStorage.getItem("orders");
+    let existingOrders = [];
+    if (storedOrders) {
+      try {
+        const parsedOrders = JSON.parse(storedOrders);
+        existingOrders = Array.isArray(parsedOrders) ? parsedOrders : [];
+      } catch (error) {
+        existingOrders = [];
+      }
+    }
+
     const newOrder = {
       id: Date.now(),
       items: cartItems,
       total: totalPrice,
       paymentMethod: paymentMethod === "COD" ? "Cash on Delivery" : onlinePaymentOption,
+      formData, // include the delivery details if needed
     };
 
     localStorage.setItem("orders", JSON.stringify([...existingOrders, newOrder]));
@@ -88,16 +93,18 @@ export default function AddressForm() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
       <div className="bg-white p-6 rounded-2xl shadow-lg w-full max-w-lg">
-        <h2 className="text-2xl font-bold mb-4 text-gray-800 text-center">Delivery Address</h2>
+        <h2 className="text-2xl font-bold mb-4 text-gray-800 text-center">
+          Delivery Address
+        </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
-          {[{ name: "name", icon: <FaUser />, placeholder: "Full Name" },
-            { name: "email", icon: <FaEnvelope />, placeholder: "Email Address", type: "email" },
-            { name: "mobile", icon: <FaPhone />, placeholder: "Mobile Number" },
-            { name: "optionalNumber", icon: <FaPhone />, placeholder: "Optional Number" },
-            { name: "pincode", icon: <FaMapMarkerAlt />, placeholder: "Pincode" },
-          ].map(({ name, icon, placeholder, type = "text" }) => (
+          {[
+            { name: "name", placeholder: "Full Name" },
+            { name: "email", placeholder: "Email Address", type: "email" },
+            { name: "mobile", placeholder: "Mobile Number" },
+            { name: "optionalNumber", placeholder: "Optional Number" },
+            { name: "pincode", placeholder: "Pincode" },
+          ].map(({ name, placeholder, type = "text" }) => (
             <div key={name} className="flex items-center border p-3 rounded-lg">
-              {icon}
               <input
                 type={type}
                 name={name}
@@ -108,9 +115,7 @@ export default function AddressForm() {
               />
             </div>
           ))}
-
           <div className="flex items-center border p-3 rounded-lg">
-            <FaHome className="text-gray-500 mr-2" />
             <textarea
               name="address"
               value={formData.address}
@@ -120,20 +125,40 @@ export default function AddressForm() {
               rows="3"
             />
           </div>
-
           <div className="flex gap-4 mt-4">
-            <button type="button" onClick={() => handlePaymentMethod("COD")} className={`w-1/2 p-3 font-bold rounded-lg flex items-center justify-center gap-2 ${paymentMethod === "COD" ? "bg-orange-600 text-white" : "bg-green-500 hover:bg-green-600 text-white"}`}>
-              <FaMoneyBillWave /> Cash on Delivery
+            <button
+              type="button"
+              onClick={() => handlePaymentMethod("COD")}
+              className={`w-1/2 p-3 font-bold rounded-lg flex items-center justify-center gap-2 ${
+                paymentMethod === "COD"
+                  ? "bg-orange-600 text-white"
+                  : "bg-green-500 hover:bg-green-600 text-white"
+              }`}
+            >
+              Cash on Delivery
             </button>
-            <button type="button" onClick={() => handlePaymentMethod("Online")} className={`w-1/2 p-3 font-bold rounded-lg flex items-center justify-center gap-2 ${paymentMethod === "Online" ? "bg-blue-600 text-white" : "bg-blue-500 hover:bg-blue-600 text-white"}`}>
-              <FaCreditCard /> Online Payment
+            <button
+              type="button"
+              onClick={() => handlePaymentMethod("Online")}
+              className={`w-1/2 p-3 font-bold rounded-lg flex items-center justify-center gap-2 ${
+                paymentMethod === "Online"
+                  ? "bg-blue-600 text-white"
+                  : "bg-blue-500 hover:bg-blue-600 text-white"
+              }`}
+            >
+              Online Payment
             </button>
           </div>
-
           {paymentMethod === "Online" && (
             <div className="mt-4 p-4 border rounded-lg bg-gray-50">
-              <h3 className="font-bold text-gray-700 mb-2">Select Payment Method:</h3>
-              <select className="w-full p-2 border rounded-lg" onChange={(e) => setOnlinePaymentOption(e.target.value)}>
+              <h3 className="font-bold text-gray-700 mb-2">
+                Select Payment Method:
+              </h3>
+              <select
+                className="w-full p-2 border rounded-lg"
+                onChange={(e) => setOnlinePaymentOption(e.target.value)}
+                value={onlinePaymentOption}
+              >
                 <option value="">Select Payment Option</option>
                 <option value="upi">UPI</option>
                 <option value="wallet">Wallet</option>
@@ -143,8 +168,10 @@ export default function AddressForm() {
               </select>
             </div>
           )}
-
-          <button type="submit" className="w-full p-3 font-bold rounded-lg bg-blue-800 text-white hover:opacity-80">
+          <button
+            type="submit"
+            className="w-full p-3 font-bold rounded-lg bg-blue-800 text-white hover:opacity-80"
+          >
             Place Order
           </button>
         </form>

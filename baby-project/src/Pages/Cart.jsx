@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../NavbarContext/Navbar";
 import Footer from "../Footer/Footer";
+import axios from "axios";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
@@ -22,23 +23,13 @@ const Cart = () => {
   };
 
  
-  const fetchCart = () => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (!user) return;
-
-    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    const mergedCart = storedCart.reduce((acc, item) => {
-      const existingItem = acc.find((cartItem) => cartItem.id === item.id);
-      if (existingItem) {
-        existingItem.quantity += item.quantity || 1;
-      } else {
-        acc.push({ ...item, quantity: item.quantity || 1 });
-      }
-      return acc;
-    }, []);
-
-    setCart(mergedCart);
-    localStorage.setItem("cart", JSON.stringify(mergedCart));
+  const fetchCart =async () => {
+    const userid=localStorage.getItem('id')
+const response=await axios.get(`http://localhost:5002/users/${userid}`)
+console.log(response.data.cart)
+    const storedCart = response.data.cart
+    setCart(storedCart);
+   
   };
 
   
@@ -48,23 +39,32 @@ const Cart = () => {
   };
 
   
-  const increaseQuantity = (id) => {
+  const increaseQuantity =async (id) => {
     const updatedCart = cart.map((item) =>
       item.id === id ? { ...item, quantity: item.quantity + 1 } : item
     );
+
+    const userid=localStorage.getItem('id')
+    const response=await axios.patch(`http://localhost:5002/users/${userid}`,{cart:updatedCart})
+    console.log(response.data);
+    
+    
     updateCart(updatedCart);
   };
 
   
-  const decreaseQuantity = (id) => {
+  const decreaseQuantity =async (id) => {
     const updatedCart = cart.map((item) =>
       item.id === id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
     );
+    const userid=localStorage.getItem('id')
+    const response=await axios.patch(`http://localhost:5002/users/${userid}`,{cart:updatedCart})
+    console.log(response.data);
     updateCart(updatedCart);
   };
 
  
-  const removeItem = (id) => {
+  const removeItem =async (id) => {
     const updatedCart = [...cart];
     const itemIndex = updatedCart.findIndex((item) => item.id === id);
     if (itemIndex !== -1) {
@@ -74,11 +74,14 @@ const Cart = () => {
         updatedCart.splice(itemIndex, 1);
       }
     }
+    const userid=localStorage.getItem('id')
+    const response=await axios.patch(`http://localhost:5002/users/${userid}`,{cart:updatedCart})
+    console.log(response.data);
     updateCart(updatedCart);
   };
 
  
-  const totalAmount = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  const totalAmount = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
 
  
   const handleCheckout = () => {
@@ -118,10 +121,8 @@ const Cart = () => {
                   <div>
                     <h2 className="font-semibold text-xl">{item.name}</h2>
                     <p className="text-lg">
-                      Price: {" "}
-                      <span className="font-bold text-green-600">
-                        ${(item.price * item.quantity).toFixed(2)}
-                      </span>
+                      Price: {item.price*item.quantity}
+                      
                     </p>
                     <div className="flex items-center space-x-4 mt-2">
                       <button
@@ -167,4 +168,6 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default Cart; 
+                      
+

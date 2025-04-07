@@ -19,13 +19,20 @@ const Register = () => {
     }
 
     try {
+      const res= await axios.get("http://localhost:5002/users")
+      const user=res.data.filter((val)=>val.email==form.email)
+    if(user.length!=0){
+     return alert('user already exist')
+    }
       const response = await axios.post("http://localhost:5002/users", {
         name: form.name,
         email: form.email,
         password: form.password,
+        cart:[]
       });
+console.log(response.data);
 
-      console.log("User Registered:", response.data);
+      // console.log("User Registered:", response.data);
       alert("Registration successful!");
 
       

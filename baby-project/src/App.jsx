@@ -15,6 +15,11 @@ import Footer from "./Footer/Footer";
 import Cart from "./Pages/Cart";
 import Address from "./Orders/Address";
 import OrderPage from "./Orders/OrderPage.jsx";
+import AdminDashboard from "./AdminComponent/AdminDashboard.jsx";
+import Sidebar from "./AdminComponent/Sidebar.jsx";
+import ProductDetails from "./Pages/PoductDetails.jsx";
+import ManageUsers from "./AdminComponent/ManageUsers.jsx";
+import ManageProducts from "./AdminComponent/ManageProducts.jsx";
 
 
 
@@ -24,9 +29,9 @@ function App() {
      <AuthProvider>
     <Router>
         <Routes>
-          <Route path="/" element={<Register />} />
+          <Route path="/Register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/home"element={<Home/>}  />
+          <Route path="/"element={<Home/>}  />
           <Route path="/navbar"element={<Navbar/>}  />
           <Route path="/about"element={<About/>}  />
           <Route path="/boy"element={<Boy/>}  />
@@ -38,16 +43,14 @@ function App() {
           <Route path="/cart"element={<Cart/>}  />
           <Route path="/address"element={<Address/>}  />
           <Route path="/orders"element={<OrderPage/>}  />
+          <Route path="/admin-dashboard"element={<AdminDashboard/>}  />
+          <Route path="/admin/products"element={<ManageProducts/>}  />
+          <Route path="/sidebar"element={<Sidebar/>}  />
+          <Route path="/product/:id" element={<ProductDetails/>}  />
+          <Route path= "/admin/users"element={<ManageUsers/>}  />
         
-         
-
-          
-
-
-
         </Routes>
-      
-    </Router>
+      </Router>
     </AuthProvider>
   );
 }
